@@ -1,5 +1,14 @@
-- name: Test domain name.
-  test_python_version:
-   domain_name: "{{ domain_name }}"
-  delegate_to: localhost
-  register: domain_output
+- hosts: "{{ server_ip }}"
+  remote_user: root
+  tasks:
+    - name: Test domain name.
+      test_python_version:
+       domain_name: "{{ domain_name }}"
+      delegate_to: localhost
+      register: domain_output
+
+    - debug:
+       msg: "{{domain_output}}"
+
+    - debug:
+       msg: "test"
