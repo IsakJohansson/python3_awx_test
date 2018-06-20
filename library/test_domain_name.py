@@ -16,7 +16,7 @@ def send_request():
 
     domain_name = domain_name.lower()
 
-    domain_name = domain_name.encode("idna")
+    domain_name = domain_name.decode('utf-8').encode("idna")
     # file_name, file_content = namecheap_api.edit_dcv_method()
     module.exit_json(changed=True, domain_name=domain_name)
 
