@@ -1,14 +1,20 @@
 - hosts: "{{ server_ip }}"
   remote_user: root
   tasks:
-    - name: Test domain name.
+    - name: Test python version.
       test_python_version:
+      delegate_to: localhost
+      register: version_output
+
+    - debug:
+       msg: "{{version_output}}"
+
+    - name: Test domain name.
+      test_domain_name:
        domain_name: "{{ domain_name }}"
       delegate_to: localhost
       register: domain_output
 
-    - debug:
-       msg: "{{domain_output}}"
 
     - debug:
-       msg: "test"
+       msg: "{{domain_output}}"
