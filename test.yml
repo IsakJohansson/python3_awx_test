@@ -3,7 +3,7 @@
   tasks:
     - name: Test python version.
       test_python_version:
-      delegate_to: localhost
+      delegate_to: python3
       register: version_output
 
     - debug:
@@ -12,7 +12,7 @@
     - name: Test domain name.
       test_domain_name:
        domain_name: "{{ domain_name }}"
-      delegate_to: localhost
+      delegate_to: python3
       register: domain_output
 
 
